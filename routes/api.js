@@ -2,16 +2,14 @@ const router = require('express').Router();
 const router = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
 const {
+    readFile,
 	readAndAppend,
-	readFromFile,
-	writeToFile,
 } = require('../helpers/fsUtils.js');
-const fs = require('fs');
 
 // make a get route for notes that returns the notes html
 router.get('/notes', (req, res) => {
     // gets db file and renders it with JSON so computer can read it
-    readFromFile('./db/db.json')
+    readFile('./db/db.json')
     .then((data) => 
     res.json(JSON.parse(data)));
 })
