@@ -10,9 +10,13 @@ const readAndAppend = (content, file) => {
 		} else {
 			const parsedData = JSON.parse(data);
 			parsedData.push(content);
-			writeToFile(file, parsedData);
+			writeToFile(parsedData);
 		}
 	});
 };
+
+const writeToFile = (answers) => {
+    return fs.writeFileSync("./db/db.json", JSON.stringify(answers))
+}
 
 module.exports = {readFile, readAndAppend};
